@@ -9,9 +9,9 @@ ENV ZK_HOST $ZK_HOST
 ENV ES_HOST $ES_HOST
 
 COPY gremlin-server.yaml conf/gremlin-server/gremlin-server.yaml
+COPY janusgraph-hbase-es.properties conf/gremlin-server/janusgraph-hbase-es.properties
 
-RUN cp -f conf/janusgraph-hbase-es.properties conf/gremlin-server/janusgraph-hbase-es.properties \
-  && set -x \
+RUN  set -x \
   && sed -E -i.bak 's/storage\.hostname=.*$/storage\.hostname='"$ZK_HOST"'/' conf/gremlin-server/janusgraph-hbase-es.properties \
   && sed -E -i.bak 's/storage\.backend=.*$/storage\.backend=hbase/' conf/gremlin-server/janusgraph-hbase-es.properties \
   && sed -E -i.bak 's/index\.search\.hostname=.*$/index\.search\.hostname='"$ES_HOST"'/' conf/gremlin-server/janusgraph-hbase-es.properties \

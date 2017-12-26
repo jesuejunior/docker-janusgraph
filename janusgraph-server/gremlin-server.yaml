@@ -5,6 +5,9 @@ channelizer: org.apache.tinkerpop.gremlin.server.channel.WebSocketChannelizer
 graphs: {
   graph: conf/gremlin-server/janusgraph-hbase-es.properties
 }
+# gremlin: {
+#   graph: org.janusgraph.core.JanusGraphFactory
+# }
 plugins:
   - janusgraph.imports
 scriptEngines: {
